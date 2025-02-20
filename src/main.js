@@ -17,4 +17,13 @@ k.loadSprite("map", "./map.png");
 
 k.setBackground(k.Color.fromHex("311047"));
 
+k.scene("main", async () => {
+    const mapData = await (await fetch("./map")).json() /* we await fetch function because its async; code would continue to execute - we want to load map data and not move rest of code until it's done - then convert to json object - once data is loaded we are ready to move on */
+    const layers = mapData.layers;
+
+    const map = k.make([])
+});
+
+k.go("main");
+
 /* time 19:17 */
