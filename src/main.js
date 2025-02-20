@@ -1,3 +1,4 @@
+import { scaleFactor } from "./constants";
 import { k } from "./kaboomCtx";
 
 k.loadSprite("spritesheet", "./spritesheet.png", {
@@ -21,7 +22,7 @@ k.scene("main", async () => {
     const mapData = await (await fetch("./map")).json()   /* we await fetch function because its async; code would continue to execute - we want to load map data and not move rest of code until it's done - then convert to json object - once data is loaded we are ready to move on */
     const layers = mapData.layers;
 
-    const map = k.make([k.sprite("map"), k.pos(0), k.scale()]);    /* map game object - make (makes game object) add (displays game object) */
+    const map = k.make([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);    /* map game object - make (makes game object) add (displays game object) */
 });
 
 k.go("main");
