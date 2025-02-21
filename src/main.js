@@ -20,7 +20,7 @@ k.loadSprite("map", "./map.png");
 k.setBackground(k.Color.fromHex("311047"));
 
 k.scene("main", async () => {
-    const mapData = await (await fetch("./map")).json()   /* we await fetch function because its async; code would continue to execute - we want to load map data and not move rest of code until it's done - then convert to json object - once data is loaded we are ready to move on */
+    const mapData = await (await fetch("./map.json")).json()   /* we await fetch function because its async; code would continue to execute - we want to load map data and not move rest of code until it's done - then convert to json object - once data is loaded we are ready to move on */
     const layers = mapData.layers;
 
     const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);    /* map game object - make (makes game object) add (displays game object) */
@@ -64,7 +64,6 @@ k.scene("main", async () => {
             continue; /* skip to next situation in for loop */
         }
 
-
         if (layer.name === "spawnpoints") {
             for (const entity of layer.objects) {
                 if (entity.name === "player") {
@@ -81,6 +80,13 @@ k.scene("main", async () => {
 
     k.onUpdate(() => {   /* logic to make camera follow player*/
         k.camPos(player.pos.x, player.pos.y + 100);
+    });
+
+    k.onMouseDown((mouseBtn) => {
+        if (mouseBtn !== "left" || player.isInDialogue) return; /* if mousebtn is not equal to left mouse click, then nothing, we don't move  */
+
+        const worldMousePos = k.toWorld(k.mousePos());  /* logic for player movement */
+        player.moveTo(worldMousePos, player.speed);
     })
 });
 
@@ -92,4 +98,4 @@ k.go("main");
 
 
 
-/* time 1:16:41 */
+/* time 1:21:10 */
