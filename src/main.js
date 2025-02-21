@@ -56,7 +56,7 @@ k.scene("main", async () => {
                     player.onCollide(boundary.name, () => { /* second param is function that runs when collision occurs;  */
                         player.isInDialogue = true;  /* collision with game object will activate isInDialogue property for dialogue box to display */
                         // TO DO
-                    })
+                    });
                 }
             }
         }
