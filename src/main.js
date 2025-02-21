@@ -29,6 +29,9 @@ k.scene("main", async () => {
         k.area({
             shape: new k.Rect(k.vec2(0,3, 10, 10)) /* hitbox will be a rectangle and first param is vector coordinates (hitbox drawn from origin of player plus 3 on x axis, and last two params are height and width of hitbox   )  */
         }),
+        k.body(), /* k.body is a component that makes player tangible physics object that can be collided with  */
+        k.anchor("center"), /* draw player from center not top left corner (default) */
+        k.scale(scaleFactor), 
     ]);
 });
 
