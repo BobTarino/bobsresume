@@ -32,6 +32,12 @@ k.scene("main", async () => {
         k.body(), /* k.body is a component that makes player tangible physics object that can be collided with  */
         k.anchor("center"), /* draw player from center not top left corner (default) */
         k.scale(scaleFactor), 
+        {
+            speed: 250,
+            direction: "down", 
+            isInDialogue: false, /* default - player does not have dialogue box until activated */
+        },
+        "player", /* identify game object in code - especially when making a collision event */
     ]);
 });
 
