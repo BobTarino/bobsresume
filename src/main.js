@@ -1,5 +1,6 @@
 import { scaleFactor } from "./constants";
 import { k } from "./kaboomCtx";
+import { displayDialogue } from "./utils";
 
 k.loadSprite("spritesheet", "./spritesheet.png", {
     sliceX: 39, /* 39 frames on X axis (each frame is 16x16 tile) */
@@ -31,6 +32,7 @@ k.scene("main", async () => {
         }),
         k.body(), /* k.body is a component that makes player tangible physics object that can be collided with  */
         k.anchor("center"), /* draw player from center not top left corner (default) */
+        k.pos(),
         k.scale(scaleFactor), 
         {
             speed: 250,
@@ -55,8 +57,23 @@ k.scene("main", async () => {
                 if (boundary.name) { 
                     player.onCollide(boundary.name, () => { /* second param is function that runs when collision occurs;  */
                         player.isInDialogue = true;  /* collision with game object will activate isInDialogue property for dialogue box to display */
-                        // TO DO
+                        displayDialogue("TODO", () => (player.isInDialogue = false)); /* sets isInDialogue back to false after dialog is displayed so character can move again */
                     });
+                }
+            }
+            continue; /* skip to next situation in for loop */
+        }
+
+
+        if (layer.name === "spawnpoints") {
+            for (const entity of layer.objects) {
+                if (entity.name === "player") {
+                    player.pos = k.vec2(
+                        (map.pos.x + entity.x) * scaleFactor, /*positions character spawn and scaled 4x */
+                        (map.pos.x + entity.y) * scaleFactor
+                    );
+                    k.add(player); /* add player game object we created into scene */
+                    continue;
                 }
             }
         }
@@ -71,4 +88,4 @@ k.go("main");
 
 
 
-/* time 58:09 */
+/* time 1:16:41 */
