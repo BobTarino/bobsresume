@@ -23,8 +23,21 @@ k.scene("main", async () => {
     const layers = mapData.layers;
 
     const map = k.make([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);    /* map game object - make (makes game object) add (displays game object) */
+
+    const player = k.make([
+        k.sprite("spritesheet", { anim: "idle-down" }), /* import spritesheet and default animation is idle-down */
+        k.area({
+            shape: new k.Rect(k.vec2(0,3, 10, 10)) /* hitbox will be a rectangle and first param is vector coordinates (hitbox drawn from origin of player plus 3 on x axis, and last two params are height and width of hitbox   )  */
+        }),
+    ]);
 });
 
 k.go("main");
 
-/* time 19:17 */
+
+
+
+
+
+
+/* time 44:52 */
