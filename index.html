@@ -43,8 +43,34 @@
         align-items: flex-start;
         word-spacing: 0.2rem;
         filter: drop-shadow(0 0 0.75rem rbg(112, 112, 112));
+      }
 
-        
+      .ui-text {
+        margin: 0;
+        -webkit-user-select: none; /* Safari */
+        user-select: none; /*player cannot select text and highlight it*/
+      }
+
+      .ui-close-btn {
+        font-family: inherit;
+        border-style: none;
+        border-radius: none;
+        padding: 1rem;
+        font-size: inherit;
+      }
+
+      .btn-container {
+        align-self: flex-end; /* close button will always appear at top right*/
+        margin-top: 1rem;
+      }
+
+      .note {
+        position: absolute;
+        left: 5%;
+        top: 1vh;
+        display: flex;
+        flex-direction: column;
+        color: rgb(238, 238, 238);
       }
     </style>
     <div id="app">
