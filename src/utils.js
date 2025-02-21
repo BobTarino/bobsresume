@@ -27,7 +27,7 @@ export function displayDialogue(text, onDisplayEnd) { /* onDisplayEnd function w
         dialogueUI.style.display = "none";
         dialogue.innerHTML = "";
         clearInterval(intervalRef);
-        closeBtn.removeEventListener("click", onCloseBtnClick);
+        closeBtn.removeEventListener("click", onCloseBtnClick); /* recursive; removing function itself within function */
     }
 
     closeBtn.addEventListener("click", onCloseBtnClick);
