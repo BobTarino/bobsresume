@@ -17,4 +17,18 @@ export function displayDialogue(text, onDisplayEnd) { /* onDisplayEnd function w
 
         clearInterval(intervalRef); 
     },5);
+
+    /* Close Button Functionality */
+
+    const closeBtn = document.getElementById("close");
+
+    function onCloseBtnClick() {
+        onDisplayEnd();
+        dialogueUI.style.display = "none";
+        dialogue.innerHTML = "";
+        clearInterval(intervalRef);
+        closeBtn.removeEventListener("click", onCloseBtnClick);
+    }
+
+    closeBtn.addEventListener("click", onCloseBtnClick);
 }
