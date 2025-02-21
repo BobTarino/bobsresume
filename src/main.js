@@ -51,6 +51,13 @@ k.scene("main", async () => {
                     k.pos(boundary.x, boundary.y), /* position of game object itself */
                     boundary.name, /* acts as tag for game object - will come in handy when player collides with object such as "bed" or "PC" */
                 ]);
+
+                if (boundary.name) { 
+                    player.onCollide(boundary.name, () => { /* second param is function that runs when collision occurs;  */
+                        player.isInDialogue = true;  /* collision with game object will activate isInDialogue property for dialogue box to display */
+                        // TO DO
+                    })
+                }
             }
         }
     }
@@ -64,4 +71,4 @@ k.go("main");
 
 
 
-/* time 44:52 */
+/* time 58:09 */
