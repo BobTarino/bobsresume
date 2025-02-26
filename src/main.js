@@ -145,6 +145,8 @@ k.scene("main", async () => {
             player.play("idle-up");
             return;
         }
+
+        player.play("idle-side"); /* if neither up or down, idle-side animation is displayed */
     });
 
 
@@ -158,4 +160,4 @@ k.go("main");
 
 
 
-/* time 1:21:10 */
+/* time 1:37:40 */
