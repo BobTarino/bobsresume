@@ -1,4 +1,4 @@
-import { scaleFactor } from "./constants";
+import { dialogueData, scaleFactor } from "./constants";
 import { k } from "./kaboomCtx";
 import { displayDialogue, setCamScale } from "./utils";
 
@@ -57,7 +57,7 @@ k.scene("main", async () => {
                 if (boundary.name) { 
                     player.onCollide(boundary.name, () => { /* second param is function that runs when collision occurs;  */
                         player.isInDialogue = true;  /* collision with game object will activate isInDialogue property for dialogue box to display */
-                        displayDialogue("TODO", () => (player.isInDialogue = false)); /* sets isInDialogue back to false after dialog is displayed so character can move again */
+                        displayDialogue(dialogueData[boundary.name], () => (player.isInDialogue = false)); /* sets isInDialogue back to false after dialog is displayed so character can move again */
                     });
                 }
             }
